@@ -4,6 +4,9 @@ import aircraftService from "../services/aircraft.service";
 export class AircraftController {
   async addAircraft(req: Request, res: Response) {
     try {
+      if (req.user?.role !== "admin") {
+        return res.status(403).json({ success: false, message: "Only admin can add aircraft" });
+      }
       const { name, code, seats, price } = req.body;
 
       if (!name || !code || !seats || !price) {
