@@ -13,6 +13,6 @@ export async function connectDB() {
   } catch (err) {
     console.error("MongoDB error:", err);
     process.exit(1);
-  }
-}
+  };
+};
 
